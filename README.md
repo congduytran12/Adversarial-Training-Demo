@@ -42,11 +42,6 @@ cd Adversarial-Training
 pip install -r requirements.txt
 ```
 
-Or use the Jupyter notebook to install:
-```bash
-jupyter notebook app.ipynb
-```
-
 #### Option 2: Docker Installation
 
 1. Clone the repository:
@@ -81,10 +76,7 @@ The application will be available at `http://localhost:7860`
 python app.py
 ```
 
-**Option 2: Jupyter Notebook**
-Open `app.ipynb` and run the cells sequentially.
-
-**Option 3: Docker**
+**Option 2: Docker**
 ```bash
 docker run -p 7860:7860 adversarial-training-demo
 ```
@@ -155,7 +147,6 @@ Key parameters in `app.py`:
 ```
 Adversarial-Training/
 ├── app.py           # Main Gradio application
-├── app.ipynb        # Jupyter notebook version
 ├── requirements.txt # Dependencies
 ├── Dockerfile       # Docker configuration
 ├── .dockerignore    # Docker ignore file
