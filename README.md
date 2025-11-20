@@ -25,8 +25,11 @@ The application allows users to upload images, adjust attack strength, and visua
 
 - Python 3.7+
 - CUDA-compatible GPU (optional, but recommended for faster inference)
+- Docker (optional, for containerized deployment)
 
 ### Setup
+
+#### Option 1: Local Installation
 
 1. Clone the repository:
 ```bash
@@ -44,6 +47,31 @@ Or use the Jupyter notebook to install:
 jupyter notebook app.ipynb
 ```
 
+#### Option 2: Docker Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/congduytran12/Adversarial-Training.git
+cd Adversarial-Training
+```
+
+2. Build the Docker image:
+```bash
+docker build -t adversarial-training-demo .
+```
+
+3. Run the container:
+```bash
+docker run -p 7860:7860 adversarial-training-demo
+```
+
+4. Pull and run the container from Docker Hub (Most Recommended):
+```bash
+docker run -p 7860:7860 congduytran12/adversarial-training-demo
+```
+
+The application will be available at `http://localhost:7860`
+
 ## Usage
 
 ### Running the Demo
@@ -55,6 +83,11 @@ python app.py
 
 **Option 2: Jupyter Notebook**
 Open `app.ipynb` and run the cells sequentially.
+
+**Option 3: Docker**
+```bash
+docker run -p 7860:7860 adversarial-training-demo
+```
 
 The Gradio interface will launch in your browser (typically at `http://localhost:7860`).
 
@@ -124,6 +157,9 @@ Adversarial-Training/
 ├── app.py           # Main Gradio application
 ├── app.ipynb        # Jupyter notebook version
 ├── requirements.txt # Dependencies
+├── Dockerfile       # Docker configuration
+├── .dockerignore    # Docker ignore file
+├── models/          # Pre-trained model weights
 └── README.md        # This file
 ```
 
