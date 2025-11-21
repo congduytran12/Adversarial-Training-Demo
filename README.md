@@ -59,8 +59,8 @@ docker run -p 7860:7860 congduytran12/adversarial-training-demo
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/congduytran12/Adversarial-Training.git
-cd Adversarial-Training
+git clone https://github.com/congduytran12/Adversarial-Training-Demo.git
+cd Adversarial-Training-Demo
 ```
 
 2. Build the Docker image:
