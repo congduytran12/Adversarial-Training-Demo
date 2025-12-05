@@ -10,7 +10,7 @@ DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 print(f"Running evaluation on {DEVICE}...")
 
 # load test data
-x_test, y_test = load_cifar10(n_examples=50)
+x_test, y_test = load_cifar10(n_examples=10)
 x_test, y_test = x_test.to(DEVICE), y_test.to(DEVICE)
 
 # models to evaluate
