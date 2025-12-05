@@ -3,6 +3,7 @@ from robustbench.data import load_cifar10
 from robustbench.utils import load_model
 from autoattack import AutoAttack
 import torch.nn.functional as F
+import csv
 
 # setup and configuration
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -153,4 +154,21 @@ for model_name, accs in results.items():
             print(f"{'N/A':<12}", end="")
     print()
 
+print("="*80)
+
+with open('evaluation_result.csv', 'w', newline='') as csvfile:
+    fieldnames = ['Model', 'Clean'] + list(ATTACKS.keys())
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+    writer.writeheader()
+    for model_name, accs in results.items():
+        row = {'Model': model_name, 'Clean': f"{accs.get('Clean', 0):.4f}"}
+        for attack_name in ATTACKS.keys():
+            if attack_name in accs:
+                row[attack_name] = f"{accs[attack_name]:.4f}"
+            else:
+                row[attack_name] = 'N/A'
+        writer.writerow(row)
+
+print("\nResult saved to evaluation_result.csv")
 print("="*80)
