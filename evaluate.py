@@ -116,7 +116,7 @@ for model_name, model_id in MODELS.items():
         correct = (predicted == y_test).sum().item()
         clean_acc = 100 * correct / len(y_test)
     
-    print(f"Clean Accuracy: {clean_acc:.4f}%")
+    print(f"Clean Accuracy: {clean_acc:.2f}%")
     
     results[model_name] = {"Clean": clean_acc}
     
@@ -126,7 +126,7 @@ for model_name, model_id in MODELS.items():
         acc = evaluate_model(model, x_test, y_test, attack_name, attack_type)
         if acc is not None:
             results[model_name][attack_name] = acc
-            print(f"Robust Accuracy: {acc:.4f}%")
+            print(f"Robust Accuracy: {acc:.2f}%")
         else:
             print("Failed")
     
@@ -146,10 +146,10 @@ print()
 print("-"*80)
 
 for model_name, accs in results.items():
-    print(f"{model_name:<40} {accs.get('Clean', 0):<8.4f}", end="")
+    print(f"{model_name:<40} {accs.get('Clean', 0):<8.2f}", end="")
     for attack_name in ATTACKS.keys():
         if attack_name in accs:
-            print(f"{accs[attack_name]:<12.4f}", end="")
+            print(f"{accs[attack_name]:<12.2f}", end="")
         else:
             print(f"{'N/A':<12}", end="")
     print()
@@ -162,10 +162,10 @@ with open('evaluation_result.csv', 'w', newline='') as csvfile:
 
     writer.writeheader()
     for model_name, accs in results.items():
-        row = {'Model': model_name, 'Clean': f"{accs.get('Clean', 0):.4f}"}
+        row = {'Model': model_name, 'Clean': f"{accs.get('Clean', 0):.2f}"}
         for attack_name in ATTACKS.keys():
             if attack_name in accs:
-                row[attack_name] = f"{accs[attack_name]:.4f}"
+                row[attack_name] = f"{accs[attack_name]:.2f}"
             else:
                 row[attack_name] = 'N/A'
         writer.writerow(row)
