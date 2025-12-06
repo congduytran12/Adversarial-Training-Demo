@@ -207,11 +207,11 @@ with gr.Blocks(theme=gr.themes.Soft()) as demo:
     # attack info
     gr.Markdown("""
     ### Attack Methods:
-    - **FGSM**: Fast single-step attack (< 1 sec)
-    - **APGD-CE/DLR**: Strong iterative attacks (2-5 sec)
-    - **FAB**: Minimal perturbation attack (3-8 sec)
-    - **Square**: Black-box attack (5-10 sec)
-    - **APGD-T/FAB-T**: Targeted versions (slower)
+    - **FGSM**: Fast single-step attack 
+    - **APGD-CE/DLR**: Strong iterative attacks 
+    - **FAB**: Minimal perturbation attack 
+    - **Square**: Black-box attack 
+    - **APGD-T/FAB-T**: Targeted versions 
     """)
 
     run_btn.click(
